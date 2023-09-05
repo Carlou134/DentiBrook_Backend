@@ -9,7 +9,7 @@ public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Cita;
-    private int paciente_id;
+    private int cita_id;
     private int odontologo_id;
     private int tipopago_id;
     private int duracionenhoras;
@@ -29,3 +29,5 @@ public class Cita {
     @Column(name = "fecha", length = 10)
     private LocalDate fecha;
 }
+    public Cita() {
+    }
