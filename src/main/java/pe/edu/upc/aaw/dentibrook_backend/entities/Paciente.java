@@ -8,7 +8,7 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_paciente;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "persona_id")
     private Persona persona_id;
     @Column(name = "direccion", length = 50)
