@@ -2,6 +2,7 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.PersonaDTO;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Persona;
@@ -23,6 +24,7 @@ public class PersonaController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<PersonaDTO> listar(){
         return Ps.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
