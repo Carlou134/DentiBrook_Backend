@@ -31,3 +31,8 @@ public class Cita {
 }
     public Cita() {
     }
+    public Citae(int id_Cita, Cita Cita_id, String direccion_consultorio, String odontologo_id) {
+        this.id_Cita = id_Cita;
+        this.odontologo_id = odontologo_id;
+        this.direccion_consultorio = direccion_consultorio;
+    }
