@@ -1,51 +1,63 @@
-package pe.edu.upc.aaw.dentibrook_backend.entities;
+package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
-import javax.persistence.*;
+import pe.edu.upc.aaw.dentibrook_backend.entities.Role;
 import java.time.LocalDate;
-@Entity
-@Table(name = "Persona")
-public class Persona {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int persona_id;
-    @Column(name = "nombre", length = 30)
+import java.util.List;
+
+public class UserDTO {
+    private int id;
+    private String username;
+    private String password;
+    private Boolean enabled;
+    private List<Role> roles;
     private String nombre;
-    @Column(name = "apellido", length = 30)
     private String apellido;
-    @Column(name = "genero")
     private char genero;
-    @Column(name = "fecha_nacimiento")
     private LocalDate fecha_nacimiento;
-    @Column(name = "DNI", length = 9)
     private String DNI;
-    @Column(name = "correo_electronico", length = 30)
     private String correo_electronico;
-    @Column(name = "telefono", length = 10)
     private String telefono;
-    @Column(name = "pais_de_origen", length = 20)
     private String pais_de_origen;
+    private String direccion;
 
-    public Persona() {
+    public int getId() {
+        return id;
     }
 
-    public Persona(int persona_id, String nombre, String apellido, char genero, LocalDate fecha_nacimiento, String DNI, String correo_electronico, String telefono, String pais_de_origen) {
-        this.persona_id = persona_id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.genero = genero;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.DNI = DNI;
-        this.correo_electronico = correo_electronico;
-        this.telefono = telefono;
-        this.pais_de_origen = pais_de_origen;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getPersona_id() {
-        return persona_id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPersona_id(int persona_id) {
-        this.persona_id = persona_id;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public String getNombre() {
@@ -110,5 +122,13 @@ public class Persona {
 
     public void setPais_de_origen(String pais_de_origen) {
         this.pais_de_origen = pais_de_origen;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }
