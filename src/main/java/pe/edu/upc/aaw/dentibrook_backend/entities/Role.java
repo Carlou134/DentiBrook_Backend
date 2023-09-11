@@ -1,5 +1,6 @@
 package pe.edu.upc.aaw.dentibrook_backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -25,8 +26,17 @@ public class Role implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
+    @JsonBackReference
     private Users user;
 
+    public Role() {
+    }
+
+    public Role(int id, String rol, Users user) {
+        this.id = id;
+        this.rol = rol;
+        this.user = user;
+    }
 
     //GETTERS AND SETTERES
 

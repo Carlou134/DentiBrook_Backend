@@ -1,12 +1,11 @@
 package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
-import pe.edu.upc.aaw.dentibrook_backend.entities.Persona;
 
+import pe.edu.upc.aaw.dentibrook_backend.entities.Users;
 
 public class PacienteDTO {
     private int id_paciente;
-    private Persona persona_id;
-    private String direccion;
+    private Users user_id;
     private String contacto_emergencia;
 
     public int getId_paciente() {
@@ -17,20 +16,12 @@ public class PacienteDTO {
         this.id_paciente = id_paciente;
     }
 
-    public Persona getPersona_id() {
-        return persona_id;
+    public Users getUser_id() {
+        return user_id;
     }
 
-    public void setPersona_id(Persona persona_id) {
-        this.persona_id = persona_id;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setUser_id(Users user_id) {
+        this.user_id = user_id;
     }
 
     public String getContacto_emergencia() {

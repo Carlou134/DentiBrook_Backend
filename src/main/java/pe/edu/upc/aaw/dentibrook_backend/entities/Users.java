@@ -1,6 +1,9 @@
 package pe.edu.upc.aaw.dentibrook_backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +32,44 @@ public class Users implements Serializable {
     private Boolean enabled;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private List<Role> roles;
+    @Column(length = 30)
+    private String nombre;
+    @Column(length = 30)
+    private String apellido;
+    private char genero;
+    private LocalDate fecha_nacimiento;
+    @Column(length = 9)
+    private String DNI;
+    @Column(length = 30)
+    private String correo_electronico;
+    @Column(length = 10)
+    private String telefono;
+    @Column(length = 20)
+    private String pais_de_origen;
+    @Column(length = 50)
+    private String direccion;
+
+    public Users() {
+    }
+
+    public Users(int id, String username, String password, Boolean enabled, List<Role> roles, String nombre, String apellido, char genero, LocalDate fecha_nacimiento, String DNI, String correo_electronico, String telefono, String pais_de_origen, String direccion) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.genero = genero;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.DNI = DNI;
+        this.correo_electronico = correo_electronico;
+        this.telefono = telefono;
+        this.pais_de_origen = pais_de_origen;
+        this.direccion = direccion;
+    }
 
     public int getId() {
         return id;
@@ -71,4 +111,75 @@ public class Users implements Serializable {
         this.roles = roles;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public char getGenero() {
+        return genero;
+    }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public String getCorreo_electronico() {
+        return correo_electronico;
+    }
+
+    public void setCorreo_electronico(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getPais_de_origen() {
+        return pais_de_origen;
+    }
+
+    public void setPais_de_origen(String pais_de_origen) {
+        this.pais_de_origen = pais_de_origen;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }
