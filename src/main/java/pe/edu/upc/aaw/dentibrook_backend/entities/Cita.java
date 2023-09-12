@@ -9,6 +9,8 @@ public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Cita;
+
+    private int servicio_id;
     private int cita_id;
     private int odontologo_id;
     private int tipopago_id;
@@ -18,7 +20,6 @@ public class Cita {
     private String hora;
     @Column(name = "motivo", length = 100)
     private String motivo;
-
 
     @Column(name = "estado", length = 10)
     private String estado;
@@ -31,8 +32,11 @@ public class Cita {
 }
     public Cita() {
     }
-    public Citae(int id_Cita, Cita Cita_id, String direccion_consultorio, String odontologo_id) {
+    public Cita(int id_Cita, Cita Cita_id, String direccion_consultorio, String odontologo_id,int Servicio_id) {
         this.id_Cita = id_Cita;
         this.odontologo_id = odontologo_id;
         this.direccion_consultorio = direccion_consultorio;
+        this.Servicio_id= servicio_id;
     }
+
+
