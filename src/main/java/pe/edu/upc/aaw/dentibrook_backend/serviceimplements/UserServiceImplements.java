@@ -17,4 +17,14 @@ public class UserServiceImplements implements IUserService {
     public List<Users> list() {
         return uR.findAll();
     }
+
+    @Override
+    public void insert(Users users) {
+        uR.save(users);
+    }
+
+    @Override
+    public List<String[]> quantityRolbyUser() {
+        return uR.quantityRolbyUser();
+    }
 }

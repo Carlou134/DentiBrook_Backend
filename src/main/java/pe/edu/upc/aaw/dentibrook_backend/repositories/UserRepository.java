@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Users;
 
+import java.util.List;
+
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer> {
@@ -24,4 +26,8 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
     @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
 
+    @Query(value = "SELECT r.rol, COUNT(u.id) FROM users u\n" +
+            "JOIN roles r ON r.user_id = u.id\n" +
+            "GROUP BY r.rol",nativeQuery = true)
+    public List<String[]> quantityRolbyUser();
 }

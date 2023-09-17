@@ -3,10 +3,9 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.RoleDTO;
+import pe.edu.upc.aaw.dentibrook_backend.entities.Role;
 import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.IRoleService;
 
 import java.util.List;
@@ -25,5 +24,13 @@ public class RoleController {
             ModelMapper m = new ModelMapper();
             return m.map(x, RoleDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public void registrar(@RequestBody RoleDTO dto) {
+        ModelMapper m = new ModelMapper();
+        Role r = m.map(dto, Role.class);
+        rS.insert(r);
     }
 }

@@ -17,4 +17,9 @@ public class RoleServiceImplements implements IRoleService {
     public List<Role> list() {
         return rR.findAll();
     }
+
+    @Override
+    public void insert(Role role) {
+        rR.save(role);
+    }
 }
