@@ -33,18 +33,6 @@ public class UserController {
     public void registrar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users p = m.map(dto, Users.class);
-
-        // Crear un nuevo rol desde el DTO (sin ID)
-        List<Role> rolesToAdd = dto.getRoles();
-
-        // Asignar la lista de roles al usuario (sin IDs)
-        p.setRoles(rolesToAdd);
-
-        // Para cada rol en la lista, establecer la referencia al usuario
-        for (Role role : rolesToAdd) {
-            role.setUser(p);
-        }
-
         uS.insert(p);
     }
 
