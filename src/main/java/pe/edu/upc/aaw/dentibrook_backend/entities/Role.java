@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "roles", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "rol" }) })
+@Table(name = "roles", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id"}) })
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
