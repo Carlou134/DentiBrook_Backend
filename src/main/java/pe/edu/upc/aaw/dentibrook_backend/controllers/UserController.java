@@ -6,11 +6,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
+import pe.edu.upc.aaw.dentibrook_backend.dtos.RolbyUserDTO;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.UserDTO;
-import pe.edu.upc.aaw.dentibrook_backend.entities.Role;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Users;
 import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.IUserService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,19 @@ public class UserController {
         uS.insert(p);
     }
 
+    @GetMapping("/cantidadusersporrol")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<RolbyUserDTO> cantidadUsuariosPorRol(){
+        List<String[]> list = uS.quantityRolbyUser();
+        List<RolbyUserDTO> listaDTO = new ArrayList<>();
+        for (String[] data:list){
+            RolbyUserDTO dto = new RolbyUserDTO();
+            dto.setRol(data[0]);
+            dto.setQuantityUsers(Integer.parseInt(data[1]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
+    }
 }
 
 

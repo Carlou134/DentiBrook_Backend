@@ -7,4 +7,5 @@ import java.util.List;
 public interface IUserService {
     public List<Users> list();
     public void insert(Users users);
+    public List<String[]> quantityRolbyUser();
 }
