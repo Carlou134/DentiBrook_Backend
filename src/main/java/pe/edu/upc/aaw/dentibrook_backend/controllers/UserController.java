@@ -46,6 +46,30 @@ public class UserController {
         uS.insert(u);
     }
 
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        uS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public UserDTO listarDTO(@PathVariable("id") Integer id){
+        ModelMapper m = new ModelMapper();
+        UserDTO dto = m.map(uS.listId(id),UserDTO.class);
+        return dto;
+    }
+
+    @PutMapping
+    public void modificar(@RequestBody UserDTO dto){
+        ModelMapper m = new ModelMapper();
+        Users u = m.map(dto, Users.class);
+        uS.insert(u);
+    }
+
+    @GetMapping("/buscar/{username}")
+    public Users getUserByUsername(@PathVariable String username) {
+        return uS.findByUsername(username);
+    }
+
     @GetMapping("/cantidadusersporrol")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<RolbyUserDTO> cantidadUsuariosPorRol(){
@@ -60,8 +84,7 @@ public class UserController {
         return listaDTO;
     }
 
-    //Encriptar password
-    //Bycript password encoder
+
 }
 
 
