@@ -24,6 +24,21 @@ public class UserServiceImplements implements IUserService {
     }
 
     @Override
+    public void delete(int id) {
+        uR.deleteById(id);
+    }
+
+    @Override
+    public Users listId(int id) {
+        return uR.findById(id).orElse(new Users());
+    }
+
+    @Override
+    public Users findByUsername(String username) {
+        return uR.findByUsername(username);
+    }
+
+    @Override
     public List<String[]> quantityRolbyUser() {
         return uR.quantityRolbyUser();
     }

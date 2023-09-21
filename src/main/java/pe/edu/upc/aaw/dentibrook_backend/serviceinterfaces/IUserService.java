@@ -7,5 +7,8 @@ import java.util.List;
 public interface IUserService {
     public List<Users> list();
     public void insert(Users users);
+    public void delete(int id);
+    public Users listId(int id);
+    public Users findByUsername(String username);
     public List<String[]> quantityRolbyUser();
 }
