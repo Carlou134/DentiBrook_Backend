@@ -9,9 +9,10 @@ import java.time.LocalDate;
 import java.util.List;
 @Repository
 public interface ICitaRepository extends JpaRepository<Cita,Integer> {
-    List<Cita> findByfecha(LocalDate fecha);
+    List<Cita> findByFecha(LocalDate fecha);
 
-    @Query(value="select count(t.ad_id_Cita) \n" +
-            " from Cita t",nativeQuery=true)
+    @Query(value="SELECT tipo_cita, COUNT(cita_id)\n" +
+            "FROM cita\n" +
+            "GROUP BY tipo_cita",nativeQuery=true)
     public List<String[]>quantityOfCitas();
 }
