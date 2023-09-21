@@ -17,7 +17,7 @@ public class Cita{
     private Odontologo odontologo_id;
     @ManyToOne
     @JoinColumn(name = "id")
-    private Servicio Servicio_id;
+    private Servicio servicio_id;
     @ManyToOne
     @JoinColumn(name = "tipo_pago_id")
     private TipoPago tipo_pago_id;
@@ -43,7 +43,7 @@ public class Cita{
         this.cita_id = cita_id;
         this.paciente_id = paciente_id;
         this.odontologo_id = odontologo_id;
-        Servicio_id = servicio_id;
+        this.servicio_id = servicio_id;
         this.tipo_pago_id = tipo_pago_id;
         this.fecha = fecha;
         this.hora = hora;
@@ -79,11 +79,11 @@ public class Cita{
     }
 
     public Servicio getServicio_id() {
-        return Servicio_id;
+        return servicio_id;
     }
 
     public void setServicio_id(Servicio servicio_id) {
-        Servicio_id = servicio_id;
+        this.servicio_id = servicio_id;
     }
 
     public TipoPago getTipo_pago_id() {

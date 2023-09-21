@@ -4,13 +4,14 @@ import pe.edu.upc.aaw.dentibrook_backend.entities.Odontologo;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Paciente;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Servicio;
 import pe.edu.upc.aaw.dentibrook_backend.entities.TipoPago;
+
 import java.time.LocalDate;
 
 public class CitaDTO {
     private int cita_id;
     private Paciente paciente_id;
     private Odontologo odontologo_id;
-    private Servicio Servicio_id;
+    private Servicio servicio_id;
     private TipoPago tipo_pago_id;
     private LocalDate fecha;
     private String hora;
@@ -45,11 +46,11 @@ public class CitaDTO {
     }
 
     public Servicio getServicio_id() {
-        return Servicio_id;
+        return servicio_id;
     }
 
     public void setServicio_id(Servicio servicio_id) {
-        Servicio_id = servicio_id;
+        this.servicio_id = servicio_id;
     }
 
     public TipoPago getTipo_pago_id() {
