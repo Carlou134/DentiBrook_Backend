@@ -39,6 +39,16 @@ public class UserServiceImplements implements IUserService {
     }
 
     @Override
+    public int buscarUsername(String nombre) {
+        return uR.buscarUsername(nombre);
+    }
+
+    @Override
+    public void insRol(String authority, Integer user_id) {
+        uR.insRol(authority, user_id);
+    }
+
+    @Override
     public List<String[]> quantityRolbyUser() {
         return uR.quantityRolbyUser();
     }
