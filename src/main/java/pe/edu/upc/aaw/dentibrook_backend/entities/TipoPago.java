@@ -1,6 +1,4 @@
 package pe.edu.upc.aaw.dentibrook_backend.entities;
-import org.hibernate.type.descriptor.sql.SmallIntTypeDescriptor;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,20 +7,30 @@ import javax.persistence.*;
 public class TipoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdTipoPago;
-    @Column(name = "Metodo_de_pago", nullable = false,length = 10)
+    private int tipo_pago_id;
+    @Column(name = "Metodo_de_pago", length = 10)
     private String Metodo_de_pago;
     @Column(name = "Cuotas", nullable = false)
     private int Cuotas;
     @Column(name = "Porcentaje_descuento", nullable = false)
     private int Porcentaje_descuento;
 
-    public int getIdTipoPago() {
-        return IdTipoPago;
+    public TipoPago() {
     }
 
-    public void setIdTipoPago(int idTipoPago) {
-        IdTipoPago = idTipoPago;
+    public TipoPago(int tipo_pago_id, String metodo_de_pago, int cuotas, int porcentaje_descuento) {
+        this.tipo_pago_id = tipo_pago_id;
+        Metodo_de_pago = metodo_de_pago;
+        Cuotas = cuotas;
+        Porcentaje_descuento = porcentaje_descuento;
+    }
+
+    public int getTipo_pago_id() {
+        return tipo_pago_id;
+    }
+
+    public void setTipo_pago_id(int tipo_pago_id) {
+        this.tipo_pago_id = tipo_pago_id;
     }
 
     public String getMetodo_de_pago() {

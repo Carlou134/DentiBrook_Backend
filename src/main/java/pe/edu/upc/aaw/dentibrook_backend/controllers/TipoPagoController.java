@@ -12,21 +12,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/TipoPagos")
+@RequestMapping("/tipodepagos")
 public class TipoPagoController {
     @Autowired
-    private ITipoPagoService Ps;
+    private ITipoPagoService tS;
 
     @PostMapping
     public void registrar(@RequestBody TipoPagoDTO dto){
         ModelMapper m = new ModelMapper();
-        TipoPago p = m.map(dto, TipoPago.class);
-        Ps.insert(p);
+        TipoPago t = m.map(dto, TipoPago.class);
+        tS.insert(t);
     }
 
     @GetMapping
     public List<TipoPagoDTO> listar(){
-        return Ps.list().stream().map(x->{
+        return tS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
             return m.map(x, TipoPagoDTO.class);
         }).collect(Collectors.toList());
@@ -34,21 +34,21 @@ public class TipoPagoController {
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
-        Ps.delete(id);
+        tS.delete(id);
     }
 
     @GetMapping("/{id}")
     public TipoPagoDTO listarDTO(@PathVariable("id") Integer id){
         ModelMapper m = new ModelMapper();
-        TipoPagoDTO dto = m.map(Ps.listId(id),TipoPagoDTO.class);
+        TipoPagoDTO dto = m.map(tS.listId(id),TipoPagoDTO.class);
         return dto;
     }
 
     @PutMapping
     public void modificar(@RequestBody TipoPagoDTO dto){
         ModelMapper m = new ModelMapper();
-        TipoPago p = m.map(dto, TipoPago.class);
-        Ps.insert(p);
+        TipoPago t = m.map(dto, TipoPago.class);
+        tS.insert(t);
     }
 
 }

@@ -1,12 +1,14 @@
 package pe.edu.upc.aaw.dentibrook_backend.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Cita;
 import pe.edu.upc.aaw.dentibrook_backend.repositories.ICitaRepository;
+import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.ICitaService;
 
 import java.util.List;
-
-public class CitaServiceImplements {
+@Service
+public class CitaServiceImplements implements ICitaService {
     @Autowired
     private ICitaRepository pR;
 
@@ -28,4 +30,5 @@ public class CitaServiceImplements {
     @Override
     public Cita listId(int Cita_id) {
         return pR.findById(Cita_id).orElse(new Cita());
+    }
 }

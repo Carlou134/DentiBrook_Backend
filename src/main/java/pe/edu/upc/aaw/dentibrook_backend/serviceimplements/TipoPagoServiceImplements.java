@@ -9,7 +9,7 @@ import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.ITipoPagoService;
 import java.util.List;
 
 @Service
-public class TipoPagoServiceImplements  implements ITipoPagoService{
+public class TipoPagoServiceImplements implements ITipoPagoService{
     @Autowired
     private ITipoPagoRepository pR;
     @Override
