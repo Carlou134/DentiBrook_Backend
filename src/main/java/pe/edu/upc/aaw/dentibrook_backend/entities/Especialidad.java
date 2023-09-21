@@ -8,4 +8,6 @@ public class Especialidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int especialidad_id;
+
+    
 }
