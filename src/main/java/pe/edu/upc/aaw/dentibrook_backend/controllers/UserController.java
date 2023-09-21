@@ -3,6 +3,7 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,6 +22,9 @@ public class UserController {
     @Autowired
     private IUserService uS;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<UserDTO> listar(){
@@ -33,8 +37,13 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void registrar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
-        Users p = m.map(dto, Users.class);
-        uS.insert(p);
+        Users u = m.map(dto, Users.class);
+
+        // Encriptar la contraseña antes de guardarla
+        String passwordEncriptada = passwordEncoder.encode(dto.getPassword());
+        u.setPassword(passwordEncriptada);
+
+        uS.insert(u);
     }
 
     @GetMapping("/cantidadusersporrol")
@@ -50,6 +59,9 @@ public class UserController {
         }
         return listaDTO;
     }
+
+    //Encriptar password
+    //Bycript password encoder
 }
 
 
