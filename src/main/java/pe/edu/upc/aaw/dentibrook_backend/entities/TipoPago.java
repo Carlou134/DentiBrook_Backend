@@ -8,21 +8,21 @@ public class TipoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tipo_pago_id;
-    @Column(name = "Metodo_de_pago", length = 10)
-    private String Metodo_de_pago;
-    @Column(name = "Cuotas", nullable = false)
-    private int Cuotas;
-    @Column(name = "Porcentaje_descuento", nullable = false)
-    private int Porcentaje_descuento;
+    @Column(name = "metodo_de_pago", length = 10)
+    private String metodo_de_pago;
+    @Column(name = "cuotas", nullable = false)
+    private int cuotas;
+    @Column(name = "porcentaje_descuento", nullable = false)
+    private int porcentaje_descuento;
 
     public TipoPago() {
     }
 
     public TipoPago(int tipo_pago_id, String metodo_de_pago, int cuotas, int porcentaje_descuento) {
         this.tipo_pago_id = tipo_pago_id;
-        Metodo_de_pago = metodo_de_pago;
-        Cuotas = cuotas;
-        Porcentaje_descuento = porcentaje_descuento;
+        this.metodo_de_pago = metodo_de_pago;
+        this.cuotas = cuotas;
+        this.porcentaje_descuento = porcentaje_descuento;
     }
 
     public int getTipo_pago_id() {
@@ -34,26 +34,26 @@ public class TipoPago {
     }
 
     public String getMetodo_de_pago() {
-        return Metodo_de_pago;
+        return metodo_de_pago;
     }
 
     public void setMetodo_de_pago(String metodo_de_pago) {
-        Metodo_de_pago = metodo_de_pago;
+        this.metodo_de_pago = metodo_de_pago;
     }
 
     public int getCuotas() {
-        return Cuotas;
+        return cuotas;
     }
 
     public void setCuotas(int cuotas) {
-        Cuotas = cuotas;
+        this.cuotas = cuotas;
     }
 
     public int getPorcentaje_descuento() {
-        return Porcentaje_descuento;
+        return porcentaje_descuento;
     }
 
     public void setPorcentaje_descuento(int porcentaje_descuento) {
-        Porcentaje_descuento = porcentaje_descuento;
+        this.porcentaje_descuento = porcentaje_descuento;
     }
 }
