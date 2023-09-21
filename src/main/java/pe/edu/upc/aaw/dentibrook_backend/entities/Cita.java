@@ -4,42 +4,78 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="Cita")
+@Table(name="cita")
 public class Cita{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Cita_id;
+    private int cita_id;
+    @ManyToOne
+    @JoinColumn(name = "id_paciente")
+    private Paciente paciente_id;
+    @ManyToOne
+    @JoinColumn(name = "odontologo_id")
+    private Odontologo odontologo_id;
     @ManyToOne
     @JoinColumn(name = "id")
     private Servicio Servicio_id;
     @ManyToOne
-    @JoinColumn(name = "id")
-    private TipoPago IDTipoPago;
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private Paciente id_paciente;
-
+    @JoinColumn(name = "tipo_pago_id")
+    private TipoPago tipo_pago_id;
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
-    @Column(name = "tipo_cita", nullable = false,length = 10)
-    private String tipo_cita;
+    @Column(name = "hora", nullable = false,length = 5)
+    private String hora;
     @Column(name = "Duracion_en_horas", nullable = false)
-    private int Duracion_en_horas;
+    private int duracion_en_horas;
     @Column(name = "motivo", nullable = false,length = 100)
     private String motivo;
     @Column(name = "estado", nullable = false,length = 10)
     private String estado;
     @Column(name = "direccion_consultorio", nullable = false,length = 30)
     private String direccion_consultorio;
-    @Column(name = "hora", nullable = false,length = 5)
-    private String hora;
+    @Column(name = "tipo_cita", nullable = false, length = 10)
+    private String tipo_cita;
+
+    public Cita() {
+    }
+
+    public Cita(int cita_id, Paciente paciente_id, Odontologo odontologo_id, Servicio servicio_id, TipoPago tipo_pago_id, LocalDate fecha, String hora, int duracion_en_horas, String motivo, String estado, String direccion_consultorio, String tipo_cita) {
+        this.cita_id = cita_id;
+        this.paciente_id = paciente_id;
+        this.odontologo_id = odontologo_id;
+        Servicio_id = servicio_id;
+        this.tipo_pago_id = tipo_pago_id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.duracion_en_horas = duracion_en_horas;
+        this.motivo = motivo;
+        this.estado = estado;
+        this.direccion_consultorio = direccion_consultorio;
+        this.tipo_cita = tipo_cita;
+    }
 
     public int getCita_id() {
-        return Cita_id;
+        return cita_id;
     }
 
     public void setCita_id(int cita_id) {
-        Cita_id = cita_id;
+        this.cita_id = cita_id;
+    }
+
+    public Paciente getPaciente_id() {
+        return paciente_id;
+    }
+
+    public void setPaciente_id(Paciente paciente_id) {
+        this.paciente_id = paciente_id;
+    }
+
+    public Odontologo getOdontologo_id() {
+        return odontologo_id;
+    }
+
+    public void setOdontologo_id(Odontologo odontologo_id) {
+        this.odontologo_id = odontologo_id;
     }
 
     public Servicio getServicio_id() {
@@ -50,20 +86,12 @@ public class Cita{
         Servicio_id = servicio_id;
     }
 
-    public TipoPago getIDTipoPago() {
-        return IDTipoPago;
+    public TipoPago getTipo_pago_id() {
+        return tipo_pago_id;
     }
 
-    public void setIDTipoPago(TipoPago IDTipoPago) {
-        this.IDTipoPago = IDTipoPago;
-    }
-
-    public Paciente getId_paciente() {
-        return id_paciente;
-    }
-
-    public void setId_paciente(Paciente id_paciente) {
-        this.id_paciente = id_paciente;
+    public void setTipo_pago_id(TipoPago tipo_pago_id) {
+        this.tipo_pago_id = tipo_pago_id;
     }
 
     public LocalDate getFecha() {
@@ -74,20 +102,20 @@ public class Cita{
         this.fecha = fecha;
     }
 
-    public String getTipo_cita() {
-        return tipo_cita;
+    public String getHora() {
+        return hora;
     }
 
-    public void setTipo_cita(String tipo_cita) {
-        this.tipo_cita = tipo_cita;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     public int getDuracion_en_horas() {
-        return Duracion_en_horas;
+        return duracion_en_horas;
     }
 
     public void setDuracion_en_horas(int duracion_en_horas) {
-        Duracion_en_horas = duracion_en_horas;
+        this.duracion_en_horas = duracion_en_horas;
     }
 
     public String getMotivo() {
@@ -114,12 +142,12 @@ public class Cita{
         this.direccion_consultorio = direccion_consultorio;
     }
 
-    public String getHora() {
-        return hora;
+    public String getTipo_cita() {
+        return tipo_cita;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setTipo_cita(String tipo_cita) {
+        this.tipo_cita = tipo_cita;
     }
 }
 

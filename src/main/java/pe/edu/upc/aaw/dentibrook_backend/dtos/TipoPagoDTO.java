@@ -1,17 +1,17 @@
 package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
 public class TipoPagoDTO {
-    private int IdTipoPago;
+    private int tipo_pago_id;
     private String Metodo_de_pago;
     private int Cuotas;
     private int Porcentaje_descuento;
 
-    public int getIdTipoPago() {
-        return IdTipoPago;
+    public int getTipo_pago_id() {
+        return tipo_pago_id;
     }
 
-    public void setIdTipoPago(int idTipoPago) {
-        IdTipoPago = idTipoPago;
+    public void setTipo_pago_id(int tipo_pago_id) {
+        this.tipo_pago_id = tipo_pago_id;
     }
 
     public String getMetodo_de_pago() {
