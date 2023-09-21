@@ -6,6 +6,7 @@ import pe.edu.upc.aaw.dentibrook_backend.entities.Cita;
 import pe.edu.upc.aaw.dentibrook_backend.repositories.ICitaRepository;
 import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.ICitaService;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class CitaServiceImplements implements ICitaService {
@@ -30,5 +31,15 @@ public class CitaServiceImplements implements ICitaService {
     @Override
     public Cita listId(int Cita_id) {
         return pR.findById(Cita_id).orElse(new Cita());
+    }
+
+    @Override
+    public List<Cita> findByFecha(LocalDate fecha) {
+        return pR.findByFecha(fecha);
+    }
+
+    @Override
+    public List<String[]> quantityOfCitas() {
+        return pR.quantityOfCitas();
     }
 }
