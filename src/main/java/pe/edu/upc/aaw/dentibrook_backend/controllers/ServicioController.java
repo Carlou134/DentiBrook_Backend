@@ -1,6 +1,5 @@
 package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
-<<<<<<< HEAD
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -74,7 +73,4 @@ public class ServicioController {
         }
         return vrlistaDTO;
     }
-=======
-public class ServicioController {
->>>>>>> parent of d7a0194 (Merge pull request #1 from Carlou134/master)
 }
