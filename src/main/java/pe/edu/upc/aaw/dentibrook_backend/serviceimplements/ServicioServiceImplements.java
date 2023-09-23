@@ -6,6 +6,7 @@ import pe.edu.upc.aaw.dentibrook_backend.entities.Servicio;
 import pe.edu.upc.aaw.dentibrook_backend.repositories.IServicioRepository;
 import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.IServicioService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -30,5 +31,15 @@ public class ServicioServiceImplements  implements IServicioService{
     @Override
     public Servicio listId(int Servicio_id) {
         return pR.findById(Servicio_id).orElse(new Servicio());
+    }
+
+    @Override
+    public List<Servicio> findServicioByPrecio(BigDecimal precio) {
+        return pR.findServicioByPrecio(precio);
+    }
+
+    @Override
+    public List<String[]> quantityTipo_serviciobyCita() {
+        return pR.quantityTipo_serviciobyCita();
     }
 }
