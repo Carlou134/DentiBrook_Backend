@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
     @Transactional
     @Modifying
     @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
-    public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
+    public void insRol(@Param("rol") String authority, @Param("user_id") Integer user_id);
 
     @Query(value = "SELECT r.rol, COUNT(u.id) FROM users u\n" +
             "JOIN roles r ON r.user_id = u.id\n" +
