@@ -1,7 +1,6 @@
 package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
 import pe.edu.upc.aaw.dentibrook_backend.entities.Role;
-
 import java.time.LocalDate;
 import java.util.List;
 

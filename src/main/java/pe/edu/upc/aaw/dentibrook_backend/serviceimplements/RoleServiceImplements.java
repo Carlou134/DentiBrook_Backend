@@ -22,14 +22,4 @@ public class RoleServiceImplements implements IRoleService {
     public void insert(Role role) {
         rR.save(role);
     }
-
-    @Override
-    public void delete(int id) {
-        rR.deleteById(id);
-    }
-
-    @Override
-    public Role listId(int id) {
-        return rR.findById(id).orElse(new Role());
-    }
 }

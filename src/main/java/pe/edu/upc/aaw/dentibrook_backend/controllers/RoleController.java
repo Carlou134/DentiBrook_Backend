@@ -33,23 +33,4 @@ public class RoleController {
         Role r = m.map(dto, Role.class);
         rS.insert(r);
     }
-
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
-        rS.delete(id);
-    }
-
-    @GetMapping("/{id}")
-    public RoleDTO listarDTO(@PathVariable("id") Integer id){
-        ModelMapper m = new ModelMapper();
-        RoleDTO dto = m.map(rS.listId(id),RoleDTO.class);
-        return dto;
-    }
-
-    @PutMapping
-    public void modificar(@RequestBody RoleDTO dto){
-        ModelMapper m = new ModelMapper();
-        Role r = m.map(dto, Role.class);
-        rS.insert(r);
-    }
 }
