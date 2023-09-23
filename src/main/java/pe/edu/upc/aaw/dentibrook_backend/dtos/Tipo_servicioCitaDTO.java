@@ -1,22 +1,22 @@
 package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
 public class Tipo_servicioCitaDTO {
-    private String tipo_servicio;
-    private int vrquantityCitas;
+    private String Tipo_servicio;
+    private int VrquantityCitas;
 
     public String getTipo_servicio() {
-        return tipo_servicio;
+        return Tipo_servicio;
     }
 
     public void setTipo_servicio(String tipo_servicio) {
-        this.tipo_servicio = tipo_servicio;
+        Tipo_servicio = tipo_servicio;
     }
 
     public int getVrquantityCitas() {
-        return vrquantityCitas;
+        return VrquantityCitas;
     }
 
     public void setVrquantityCitas(int vrquantityCitas) {
-        this.vrquantityCitas = vrquantityCitas;
+        VrquantityCitas = vrquantityCitas;
     }
 }
