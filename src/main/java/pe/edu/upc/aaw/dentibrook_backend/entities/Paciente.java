@@ -1,7 +1,5 @@
 package pe.edu.upc.aaw.dentibrook_backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
