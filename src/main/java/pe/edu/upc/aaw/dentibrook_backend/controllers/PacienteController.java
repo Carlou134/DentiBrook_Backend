@@ -2,7 +2,6 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.PacienteDTO;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Paciente;
@@ -25,7 +24,6 @@ public class PacienteController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public List<PacienteDTO> listar(){
         return pS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
