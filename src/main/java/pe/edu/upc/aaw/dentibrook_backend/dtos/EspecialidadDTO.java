@@ -2,7 +2,7 @@ package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
 public class EspecialidadDTO {
     private int especialidad_id;
-    private String nombre_especialidad;
+    private String nombreEspecialidad;
 
     public int getEspecialidad_id() {
         return especialidad_id;
@@ -12,11 +12,11 @@ public class EspecialidadDTO {
         this.especialidad_id = especialidad_id;
     }
 
-    public String getNombre_especialidad() {
-        return nombre_especialidad;
+    public String getNombreEspecialidad() {
+        return nombreEspecialidad;
     }
 
-    public void setNombre_especialidad(String nombre_especialidad) {
-        this.nombre_especialidad = nombre_especialidad;
+    public void setNombreEspecialidad(String nombreEspecialidad) {
+        this.nombreEspecialidad = nombreEspecialidad;
     }
 }

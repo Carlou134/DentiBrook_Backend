@@ -9,6 +9,7 @@ import pe.edu.upc.aaw.dentibrook_backend.entities.TipoPago;
 import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.ITipoPagoService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -51,4 +52,12 @@ public class TipoPagoController {
         tS.insert(t);
     }
 
+    @PostMapping("/buscar")
+    public List<TipoPagoDTO> buscar(@RequestBody Map<String, String> request) {
+        String metodoDePago = request.get("metodoDePago");
+        return tS.findByMetodoDePago(metodoDePago).stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x, TipoPagoDTO.class);
+        }).collect(Collectors.toList());
+    }
 }

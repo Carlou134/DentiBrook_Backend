@@ -9,4 +9,5 @@ public interface IEspecialidadService {
     public List<Especialidad> list();
     public void delete(int especialidad_id);
     public Especialidad listId(int especialidad_id);
+    List<Especialidad> findEspecialidadByNombreEspecialidad(String nombreEspecialidad);
 }

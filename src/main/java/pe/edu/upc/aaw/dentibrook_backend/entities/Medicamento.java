@@ -12,9 +12,9 @@ public class Medicamento {
     private int medicamento_id;
     @Column(name = "nombre", length = 100)
     private String nombre;
-    @Column(name = "forma_farmaceutica", length = 20)
+    @Column(name = "forma_farmaceutica", length = 50)
     private String forma_farmaceutica;
-    @Column(name = "via", length = 10)
+    @Column(name = "via", length = 50)
     private String via;
     @Column(name = "fecha_caducidad")
     private LocalDate fecha_caducidad;

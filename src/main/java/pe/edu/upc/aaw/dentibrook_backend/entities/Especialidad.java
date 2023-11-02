@@ -8,15 +8,15 @@ public class Especialidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int especialidad_id;
-    @Column(name = "nombre_especialidad", length = 30)
-    private String nombre_especialidad;
+    @Column(name = "nombreEspecialidad", length = 30)
+    private String nombreEspecialidad;
 
     public Especialidad() {
     }
 
-    public Especialidad(int especialidad_id, String nombre_especialidad) {
+    public Especialidad(int especialidad_id, String nombreEspecialidad) {
         this.especialidad_id = especialidad_id;
-        this.nombre_especialidad = nombre_especialidad;
+        this.nombreEspecialidad = nombreEspecialidad;
     }
 
     public int getEspecialidad_id() {
@@ -27,11 +27,11 @@ public class Especialidad {
         this.especialidad_id = especialidad_id;
     }
 
-    public String getNombre_especialidad() {
-        return nombre_especialidad;
+    public String getNombreEspecialidad() {
+        return nombreEspecialidad;
     }
 
-    public void setNombre_especialidad(String nombre_especialidad) {
-        this.nombre_especialidad = nombre_especialidad;
+    public void setNombreEspecialidad(String nombreEspecialidad) {
+        this.nombreEspecialidad = nombreEspecialidad;
     }
 }

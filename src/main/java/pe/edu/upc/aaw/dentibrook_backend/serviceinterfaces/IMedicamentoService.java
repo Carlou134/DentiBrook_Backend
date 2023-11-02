@@ -9,4 +9,5 @@ public interface IMedicamentoService {
     public List<Medicamento> list();
     public void delete(int medicamento_id);
     public Medicamento listId(int medicamento_id);
+    List<Medicamento> findByVia(String via);
 }

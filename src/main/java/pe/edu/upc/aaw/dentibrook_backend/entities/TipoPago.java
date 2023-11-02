@@ -8,8 +8,8 @@ public class TipoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tipo_pago_id;
-    @Column(name = "metodo_de_pago", length = 10)
-    private String metodo_de_pago;
+    @Column(name = "metodo_de_pago", length = 50)
+    private String metodoDePago;
     @Column(name = "cuotas", nullable = false)
     private int cuotas;
     @Column(name = "porcentaje_descuento", nullable = false)
@@ -18,9 +18,9 @@ public class TipoPago {
     public TipoPago() {
     }
 
-    public TipoPago(int tipo_pago_id, String metodo_de_pago, int cuotas, int porcentaje_descuento) {
+    public TipoPago(int tipo_pago_id, String metodoDePago, int cuotas, int porcentaje_descuento) {
         this.tipo_pago_id = tipo_pago_id;
-        this.metodo_de_pago = metodo_de_pago;
+        this.metodoDePago = metodoDePago;
         this.cuotas = cuotas;
         this.porcentaje_descuento = porcentaje_descuento;
     }
@@ -33,12 +33,12 @@ public class TipoPago {
         this.tipo_pago_id = tipo_pago_id;
     }
 
-    public String getMetodo_de_pago() {
-        return metodo_de_pago;
+    public String getMetodoDePago() {
+        return metodoDePago;
     }
 
-    public void setMetodo_de_pago(String metodo_de_pago) {
-        this.metodo_de_pago = metodo_de_pago;
+    public void setMetodoDePago(String metodoDePago) {
+        this.metodoDePago = metodoDePago;
     }
 
     public int getCuotas() {

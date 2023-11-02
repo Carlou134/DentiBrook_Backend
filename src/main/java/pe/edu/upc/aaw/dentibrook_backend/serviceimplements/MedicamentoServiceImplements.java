@@ -33,4 +33,9 @@ public class MedicamentoServiceImplements implements IMedicamentoService {
     public Medicamento listId(int medicamento_id) {
         return mR.findById(medicamento_id).orElse(new Medicamento());
     }
+
+    @Override
+    public List<Medicamento> findByVia(String via) {
+        return mR.findByVia(via);
+    }
 }

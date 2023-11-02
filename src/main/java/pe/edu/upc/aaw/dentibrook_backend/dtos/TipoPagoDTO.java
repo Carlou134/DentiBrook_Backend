@@ -3,7 +3,7 @@ package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
 public class TipoPagoDTO {
     private int tipo_pago_id;
-    private String metodo_de_pago;
+    private String metodoDePago;
     private int cuotas;
     private int porcentaje_descuento;
 
@@ -15,12 +15,12 @@ public class TipoPagoDTO {
         this.tipo_pago_id = tipo_pago_id;
     }
 
-    public String getMetodo_de_pago() {
-        return metodo_de_pago;
+    public String getMetodoDePago() {
+        return metodoDePago;
     }
 
-    public void setMetodo_de_pago(String metodo_de_pago) {
-        this.metodo_de_pago = metodo_de_pago;
+    public void setMetodoDePago(String metodoDePago) {
+        this.metodoDePago = metodoDePago;
     }
 
     public int getCuotas() {

@@ -3,6 +3,7 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aaw.dentibrook_backend.dtos.EspecialidadDTO;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.ServicioDTO;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.Tipo_servicioCitaDTO;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Servicio;
@@ -11,6 +12,7 @@ import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.IServicioService;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -54,10 +56,12 @@ public class ServicioController {
     }
 
     @PostMapping("/buscar")
-    public List<ServicioDTO> buscar(@RequestBody BigDecimal precio) {
+    public List<ServicioDTO> buscar(@RequestBody Map<String, String> request) {
+        String precioStr = request.get("precio");
+        BigDecimal precio = new BigDecimal(precioStr);
         return sS.findServicioByPrecio(precio).stream().map(x->{
-            ModelMapper vrm=new ModelMapper();
-            return vrm.map(x,ServicioDTO.class);
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ServicioDTO.class);
         }).collect(Collectors.toList());
     }
 
