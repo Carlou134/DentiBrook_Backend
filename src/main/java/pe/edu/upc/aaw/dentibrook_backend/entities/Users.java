@@ -30,7 +30,7 @@ public class Users implements Serializable {
     @Column(length = 200)
     private String password;
     private Boolean enabled;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private List<Role> roles;
@@ -40,9 +40,9 @@ public class Users implements Serializable {
     private String apellido;
     private char genero;
     private LocalDate fecha_nacimiento;
-    @Column(length = 9)
-    private String DNI;
-    @Column(length = 30)
+    @Column(name = "dni", length = 9)
+    private String dni;
+    @Column(length = 200)
     private String correo_electronico;
     @Column(length = 10)
     private String telefono;
@@ -54,7 +54,7 @@ public class Users implements Serializable {
     public Users() {
     }
 
-    public Users(int id, String username, String password, Boolean enabled, List<Role> roles, String nombre, String apellido, char genero, LocalDate fecha_nacimiento, String DNI, String correo_electronico, String telefono, String pais_de_origen, String direccion) {
+    public Users(int id, String username, String password, Boolean enabled, List<Role> roles, String nombre, String apellido, char genero, LocalDate fecha_nacimiento, String dni, String correo_electronico, String telefono, String pais_de_origen, String direccion) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -64,7 +64,7 @@ public class Users implements Serializable {
         this.apellido = apellido;
         this.genero = genero;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.DNI = DNI;
+        this.dni = dni;
         this.correo_electronico = correo_electronico;
         this.telefono = telefono;
         this.pais_de_origen = pais_de_origen;
@@ -143,12 +143,12 @@ public class Users implements Serializable {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public String getDNI() {
-        return DNI;
+    public String getDni() {
+        return dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getCorreo_electronico() {
