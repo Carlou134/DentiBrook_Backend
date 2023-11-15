@@ -2,6 +2,8 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,10 +23,11 @@ public class UserController {
     @Autowired
     private IUserService uS;
 
-    /*@Autowired
-    private PasswordEncoder passwordEncoder;*/
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ODONTOLOGO')")
     public List<UserDTO> listar(){
         return uS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -37,8 +40,8 @@ public class UserController {
         Users u = m.map(dto, Users.class);
 
         // Encriptar la contraseña antes de guardarla
-        /*String passwordEncriptada = passwordEncoder.encode(dto.getPassword());
-        u.setPassword(passwordEncriptada);*/
+        String passwordEncriptada = passwordEncoder.encode(dto.getPassword());
+        u.setPassword(passwordEncriptada);
 
         uS.insert(u);
     }
@@ -60,7 +63,6 @@ public class UserController {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
 
-        /*
         // Verificar si se proporcionó una nueva contraseña en el DTO
         if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
             // Encriptar la nueva contraseña antes de guardarla
@@ -73,7 +75,7 @@ public class UserController {
             if (existingUser != null) {
                 u.setPassword(existingUser.getPassword());
             }
-        }*/
+        }
 
         uS.insert(u); // Asegúrate de que este método haga la actualización o inserción adecuada
     }

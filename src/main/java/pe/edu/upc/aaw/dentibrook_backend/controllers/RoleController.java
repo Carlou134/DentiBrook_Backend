@@ -2,6 +2,7 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.RoleDTO;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Role;
@@ -17,6 +18,7 @@ public class RoleController {
     private IRoleService rS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ODONTOLOGO')")
     public List<RoleDTO> listar(){
         return rS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
