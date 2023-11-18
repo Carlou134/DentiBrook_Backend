@@ -5,9 +5,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.TipoPagoDTO;
+import pe.edu.upc.aaw.dentibrook_backend.dtos.TipoPagoSumDTO;
 import pe.edu.upc.aaw.dentibrook_backend.entities.TipoPago;
 import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.ITipoPagoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -59,5 +61,20 @@ public class TipoPagoController {
             ModelMapper m = new ModelMapper();
             return m.map(x, TipoPagoDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/cuotas")
+    public List<TipoPagoSumDTO> difficultyPersons() {
+        List<String[]> cuotasTipoPago = tS.sumCuotas();
+        List<TipoPagoSumDTO> cuotasTipoPagoDTO = new ArrayList<>();
+
+        for (String[] data : cuotasTipoPago) {
+            TipoPagoSumDTO dto = new TipoPagoSumDTO();
+            dto.setMetodoDePago(data[0]);
+            dto.setTotalCuotas(Integer.parseInt(data[1]));
+            cuotasTipoPagoDTO.add(dto);
+        }
+
+        return cuotasTipoPagoDTO;
     }
 }

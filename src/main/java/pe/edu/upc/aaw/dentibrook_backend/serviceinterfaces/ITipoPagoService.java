@@ -7,6 +7,6 @@ public interface ITipoPagoService {
     public List<TipoPago> list();
     public void delete(int IdTipoPago);
     public TipoPago listId(int IdTipoPago);
-
     List<TipoPago> findByMetodoDePago(String metodoDePago);
+    public List<String[]> sumCuotas();
 }
