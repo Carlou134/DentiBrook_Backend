@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.aaw.dentibrook_backend.dtos.EstrellasSumDTO;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.HistorialDTOSum;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.OdontologoDTO;
 import pe.edu.upc.aaw.dentibrook_backend.entities.Odontologo;
@@ -70,5 +71,21 @@ public class OdontologoController {
         }
 
         return historialDTO;
+    }
+
+    @GetMapping("/estrellas")
+    @PreAuthorize("hasAuthority('ODONTOLOGO')")
+    public List<EstrellasSumDTO> OdontologoEstrellas() {
+        List<String[]> odontologoEstrellas = oS.sumEstrellas();
+        List<EstrellasSumDTO> estrellasDTO = new ArrayList<>();
+
+        for (String[] data : odontologoEstrellas) {
+            EstrellasSumDTO dto = new EstrellasSumDTO();
+            dto.setNombre(data[0]);
+            dto.setTotalEstrellas(Integer.parseInt(data[1]));
+            estrellasDTO.add(dto);
+        }
+
+        return estrellasDTO;
     }
 }

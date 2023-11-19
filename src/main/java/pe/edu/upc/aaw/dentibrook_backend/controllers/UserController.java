@@ -40,7 +40,7 @@ public class UserController {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
 
-        // Encriptar la contraseña antes de guardarla
+        // Encriptar la contra antes de guardarla
         String passwordEncriptada = passwordEncoder.encode(dto.getPassword());
         u.setPassword(passwordEncriptada);
 
@@ -64,21 +64,21 @@ public class UserController {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
 
-        // Verificar si se proporcionó una nueva contraseña en el DTO
+        // Verificar si se proporciono una nueva contra en el DTO
         if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
-            // Encriptar la nueva contraseña antes de guardarla
+            // Encriptar la nueva contra antes de guardarla
             String passwordEncriptada = passwordEncoder.encode(dto.getPassword());
             u.setPassword(passwordEncriptada);
         } else {
-            // Si no se proporcionó una nueva contraseña, mantener la contraseña existente
-            // Esto es útil si solo se están actualizando otros campos del usuario sin cambiar la contraseña.
-            Users existingUser = uS.listId(u.getId()); // Utiliza el método adecuado de tu servicio
+            // Si no se proporciono una nueva contra, mantener la contra existente
+            // Esto es util si solo se estan actualizando otros campos del usuario sin cambiar la contra.
+            Users existingUser = uS.listId(u.getId()); // Utiliza el metodo adecuado de tu servicio
             if (existingUser != null) {
                 u.setPassword(existingUser.getPassword());
             }
         }
 
-        uS.insert(u); // Asegúrate de que este método haga la actualización o inserción adecuada
+        uS.insert(u);
     }
 
     @GetMapping("/buscar/{username}")

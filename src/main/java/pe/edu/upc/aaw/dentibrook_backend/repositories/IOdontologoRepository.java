@@ -14,4 +14,11 @@ public interface IOdontologoRepository extends JpaRepository<Odontologo, Integer
             "INNER JOIN especialidad e ON o.especialidad_id = e.especialidad_id\n" +
             "GROUP BY e.nombre_especialidad ORDER BY COUNT(e.nombre_especialidad) desc", nativeQuery = true)
     public List<String[]> sumHistorial();
+
+    @Query(value = "SELECT u.nombre, SUM(r.estrellas) \n" +
+            "FROM odontologo o \n" +
+            "INNER JOIN reputacion r ON r.odontologo_id = o.odontologo_id\n" +
+            "INNER JOIN users u ON u.id = o.id\n" +
+            "GROUP BY u.nombre ORDER BY COUNT(u.nombre) desc", nativeQuery = true)
+    public List<String[]> sumEstrellas();
 }

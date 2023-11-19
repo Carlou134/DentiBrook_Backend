@@ -39,4 +39,9 @@ public class OdontologoServiceImplements implements IOdontologoService {
     public List<String[]> sumHistorial() {
         return oR.sumHistorial();
     }
+
+    @Override
+    public List<String[]> sumEstrellas() {
+        return oR.sumEstrellas();
+    }
 }
