@@ -20,7 +20,7 @@ public class Odontologo {
     private String educacion_universitaria;
     @Column(name = "historial_pacientes", nullable = false)
     private int historial_pacientes;
-    @Column(name = "horario_atencion", length = 11)
+    @Column(name = "horario_atencion", length = 100)
     private String horario_atencion;
     @Column(name = "salario", nullable = false)
     private BigDecimal salario;

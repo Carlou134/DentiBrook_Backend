@@ -11,7 +11,7 @@ public class Paciente {
     @ManyToOne
     @JoinColumn(name = "id")
     private Users user_id;
-    @Column(name = "contacto_emergencia", length = 10)
+    @Column(name = "contacto_emergencia", length = 100)
     private String contacto_emergencia;
 
     public Paciente() {

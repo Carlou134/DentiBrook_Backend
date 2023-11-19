@@ -34,4 +34,9 @@ public class OdontologoServiceImplements implements IOdontologoService {
     public Odontologo listId(int odontologo_id) {
         return oR.findById(odontologo_id).orElse(new Odontologo());
     }
+
+    @Override
+    public List<String[]> sumHistorial() {
+        return oR.sumHistorial();
+    }
 }

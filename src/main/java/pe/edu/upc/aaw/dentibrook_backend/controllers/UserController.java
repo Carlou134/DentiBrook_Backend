@@ -27,7 +27,7 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ODONTOLOGO')")
+    @PreAuthorize("hasAuthority('ODONTOLOGO') OR hasAuthority('USER')")
     public List<UserDTO> listar(){
         return uS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -35,6 +35,7 @@ public class UserController {
         }).collect(Collectors.toList());
     }
     @PostMapping
+    @PreAuthorize("hasAuthority('ODONTOLOGO')")
     public void registrar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);

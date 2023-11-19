@@ -18,6 +18,7 @@ public class PacienteController {
     private IPacienteService pS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('USER')")
     public void registrar(@RequestBody PacienteDTO dto){
         ModelMapper m = new ModelMapper();
         Paciente p = m.map(dto, Paciente.class);
@@ -25,7 +26,7 @@ public class PacienteController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ODONTOLOGO')")
+    @PreAuthorize("hasAuthority('USER')")
     public List<PacienteDTO> listar(){
         return pS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();

@@ -3,6 +3,7 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.TipoPagoDTO;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.TipoPagoSumDTO;
@@ -64,6 +65,7 @@ public class TipoPagoController {
     }
 
     @GetMapping("/cuotas")
+    @PreAuthorize("hasAuthority('ODONTOLOGO')")
     public List<TipoPagoSumDTO> difficultyPersons() {
         List<String[]> cuotasTipoPago = tS.sumCuotas();
         List<TipoPagoSumDTO> cuotasTipoPagoDTO = new ArrayList<>();
