@@ -33,4 +33,9 @@ public class EspecialidadServiceImplements implements IEspecialidadService {
     public Especialidad listId(int especialidad_id) {
         return eR.findById(especialidad_id).orElse(new Especialidad());
     }
+
+    @Override
+    public List<Especialidad> findEspecialidadByNombreEspecialidad(String nombreEspecialidad) {
+        return eR.findEspecialidadByNombreEspecialidad(nombreEspecialidad);
+    }
 }

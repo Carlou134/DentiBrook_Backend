@@ -18,7 +18,7 @@ public class RoleController {
     private IRoleService rS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ODONTOLOGO')")
     public List<RoleDTO> listar(){
         return rS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -27,7 +27,6 @@ public class RoleController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void registrar(@RequestBody RoleDTO dto) {
         ModelMapper m = new ModelMapper();
         Role r = m.map(dto, Role.class);

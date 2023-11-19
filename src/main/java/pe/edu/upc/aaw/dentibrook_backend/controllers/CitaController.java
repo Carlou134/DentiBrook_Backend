@@ -2,6 +2,7 @@ package pe.edu.upc.aaw.dentibrook_backend.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.CitaDTO;
 import pe.edu.upc.aaw.dentibrook_backend.dtos.QuantitybyCitaDTO;
@@ -21,6 +22,7 @@ public class CitaController {
     private ICitaService cS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('USER')")
     public void registrar(@RequestBody CitaDTO dto){
         ModelMapper m = new ModelMapper();
         Cita c = m.map(dto, Cita.class);
@@ -28,6 +30,7 @@ public class CitaController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ODONTOLOGO') OR hasAuthority('USER')")
     public List<CitaDTO> listar(){
         return cS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();

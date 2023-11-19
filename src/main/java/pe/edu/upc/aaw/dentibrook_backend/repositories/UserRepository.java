@@ -26,8 +26,8 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
     @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("user_id") Integer user_id);
 
-    @Query(value = "SELECT r.rol, COUNT(u.id) FROM users u\n" +
-            "JOIN roles r ON r.user_id = u.id\n" +
-            "GROUP BY r.rol",nativeQuery = true)
+    @Query(value = "SELECT r.rol, COUNT(u.id) FROM users u \n" +
+            "INNER JOIN roles r ON r.user_id = u.id\n" +
+            "GROUP BY r.rol ORDER BY COUNT(u.id) desc",nativeQuery = true)
     public List<String[]> quantityRolbyUser();
 }

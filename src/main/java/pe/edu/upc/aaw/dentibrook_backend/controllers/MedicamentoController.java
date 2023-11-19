@@ -9,6 +9,7 @@ import pe.edu.upc.aaw.dentibrook_backend.serviceinterfaces.IMedicamentoService;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -49,5 +50,14 @@ public class MedicamentoController {
         ModelMapper m = new ModelMapper();
         Medicamento me = m.map(dto, Medicamento.class);
         mS.insert(me);
+    }
+
+    @PostMapping("/buscar")
+    public List<MedicamentoDTO> buscar(@RequestBody Map<String, String> request) {
+        String via = request.get("via");
+        return mS.findByVia(via).stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x, MedicamentoDTO.class);
+        }).collect(Collectors.toList());
     }
 }

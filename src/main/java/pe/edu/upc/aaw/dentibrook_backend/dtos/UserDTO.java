@@ -15,7 +15,7 @@ public class UserDTO {
     private String apellido;
     private char genero;
     private LocalDate fecha_nacimiento;
-    private String DNI;
+    private String dni;
     private String correo_electronico;
     private String telefono;
     private String pais_de_origen;
@@ -93,12 +93,12 @@ public class UserDTO {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public String getDNI() {
-        return DNI;
+    public String getDni() {
+        return dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getCorreo_electronico() {

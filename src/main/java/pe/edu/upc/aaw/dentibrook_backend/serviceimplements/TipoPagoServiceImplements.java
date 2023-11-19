@@ -31,5 +31,15 @@ public class TipoPagoServiceImplements implements ITipoPagoService{
     public TipoPago listId(int TipoPago_id) {
         return pR.findById(TipoPago_id).orElse(new TipoPago());
 }
+
+    @Override
+    public List<TipoPago> findByMetodoDePago(String metodoDePago) {
+        return pR.findByMetodoDePago(metodoDePago);
+    }
+
+    @Override
+    public List<String[]> sumCuotas() {
+        return pR.sumCuotas();
+    }
 }
 

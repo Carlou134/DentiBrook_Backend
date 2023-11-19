@@ -1,16 +1,8 @@
 package pe.edu.upc.aaw.dentibrook_backend.dtos;
 
-public class EspecialidadDTO {
-    private int especialidad_id;
+public class HistorialDTOSum {
     private String nombreEspecialidad;
-
-    public int getEspecialidad_id() {
-        return especialidad_id;
-    }
-
-    public void setEspecialidad_id(int especialidad_id) {
-        this.especialidad_id = especialidad_id;
-    }
+    private int totalPacientes;
 
     public String getNombreEspecialidad() {
         return nombreEspecialidad;
@@ -18,5 +10,13 @@ public class EspecialidadDTO {
 
     public void setNombreEspecialidad(String nombreEspecialidad) {
         this.nombreEspecialidad = nombreEspecialidad;
+    }
+
+    public int getTotalPacientes() {
+        return totalPacientes;
+    }
+
+    public void setTotalPacientes(int totalPacientes) {
+        this.totalPacientes = totalPacientes;
     }
 }

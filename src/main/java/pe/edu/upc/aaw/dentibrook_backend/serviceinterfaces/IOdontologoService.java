@@ -10,4 +10,6 @@ public interface IOdontologoService {
     public List<Odontologo> list();
     public void delete(int odontologo_id);
     public Odontologo listId(int odontologo_id);
+    public List<String[]> sumHistorial();
+    public List<String[]> sumEstrellas();
 }
